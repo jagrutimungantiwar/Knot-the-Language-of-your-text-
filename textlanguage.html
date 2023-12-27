@@ -1,0 +1,119 @@
+<html>
+
+<head>
+<title>Text Language by API</title>
+<style>*{
+	margin:0;
+	padding:0;
+}
+</style>
+<style>
+.banner{
+	width: 100%;
+	height:100vh;
+	background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),
+	url("https://images.unsplash.com/photo-1634128221889-82ed6efebfc3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bGFuZ3VhZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80");
+	background-size:cover;
+	background-position:center;
+}
+</style>
+<style>
+.content{
+	width:100%;
+	position:absolute;
+	top:50%
+	transform:translateY(-50%);
+	text-align:center;
+	color:#fff;
+	font-size:40px;
+	margin-top:80;
+}
+</style>
+<style>
+.p1{
+ width:50%;
+ transform:translateX(50%)
+ }
+</style>
+</head>
+
+<body>
+<div class="banner">
+<div class="content">
+<fieldset class="p1">
+	<br>
+	<br>
+<legend> Know The Language Of Your Text</legend>
+<h1>Text:<span id="sentence"></span></h1>
+<form>
+<input type="text" id="words"/>
+<button value ="button" id="submit">get Language</button>
+</form>
+
+<p>It is in </p>
+	<p id="language"></p>
+	<br>
+	<br>
+</div>	
+</fieldset>
+
+	<script>
+
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '1e5a9e406cmsh86f6c7fe38f619bp1c34cejsnbe818aeff87b',
+		'X-RapidAPI-Host': 'text-language-by-api-ninjas.p.rapidapi.com'
+	}
+};
+const getLanguage = (words) => {
+	sentence.innerHTML = words
+fetch('https://text-language-by-api-ninjas.p.rapidapi.com/v1/textlanguage?text='+ words,options)
+
+
+.then(response => response.json())
+	.then(response => {console.log(response)
+	
+		language.innerHTML = response.language;
+
+	})
+	.catch(err => console.error(err));
+}
+
+submit.addEventListener("click", (e)=>{
+	e.preventDefault()
+	
+	getLanguage(words.value)
+
+})
+
+
+getLanguage("Hello World")
+
+	</script>
+</div>
+
+</body>
+
+
+
+
+<! text for search:
+Hola Mundo
+Olá Mundo
+Halo Dunia
+こんにちは世界
+Привет, мир
+ہیلو دنیا
+नमस्कार जग
+Γειά σου Κόσμε
+Hallo Welt
+ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ ਦੁਨਿਆ
+
+>
+
+
+
+</html>
+
+
